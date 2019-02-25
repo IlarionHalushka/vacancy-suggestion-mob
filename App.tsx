@@ -50,8 +50,9 @@ export default class App extends Component {
             data={this.state.qualifications}
             keyExtractor={(item) => item._id}
             renderItem={({item} : {item: Item}) =>
-                <View>
-                  <Text>{`${item.value}:${item.counter}`}</Text>
+                <View style={styles.listItem}>
+                  <Text style={{ alignSelf: 'center' }}>{`${item.value}`}</Text>
+                  <Text style={{ alignSelf: 'center' }}>{`${item.counter}`}</Text>
                 </View>
             }
         />
@@ -63,7 +64,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
+      justifyContent: 'center'
   },
   qualificationsBtn: {
       alignSelf: 'auto',
@@ -71,11 +72,20 @@ const styles = StyleSheet.create({
       borderColor: '#2c51ff',
       backgroundColor: '#80d9ff',
       borderRadius: 20,
-      marginVertical: 50,
+      marginVertical: 25,
       marginHorizontal: '10%',
       width: '80%',
       height: '10%',
       alignItems: 'center',
       justifyContent: 'center',
-  }
+  },
+    listItem: {
+      margin: 2,
+        marginHorizontal: '20%',
+        borderTopWidth: 1,
+        borderTopEndRadius: 10,
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    }
 });
