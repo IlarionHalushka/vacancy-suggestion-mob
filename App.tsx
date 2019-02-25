@@ -1,8 +1,13 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableHighlight } from 'react-native';
-import { Hello } from './Hello';
 import api from './api';
+
+interface Item {
+  _id: string,
+  value: string,
+  counter: number,
+}
 
 export default class App extends Component {
   state = {
@@ -16,42 +21,35 @@ export default class App extends Component {
     this.setState({ loading: true });
 
     try {
-      interface Qualification {
+      interface Qualification extends Array<Qualification>{
         counter: number,
       }
-      interface Qualification extends Array<Qualification>{}
 
+      // @ts-ignore
       const data: Qualification[] = await api.getQualifications();
 
       data.sort((a,b) => b.counter - a.counter);
 
-      this.setState({
-        qualifications: data,
-        loading: false,
-        showNavigation: true,
-      });
+      this.setState({ qualifications: data, loading: false, showNavigation: true });
     } catch (err) {
       console.error(err);
       this.setState({
         loading: false,
       });
     }
-
-    console.log(this.state.qualifications);
   };
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={{margin: 50}}>Your Typescript project is working!</Text>
-        {/*<Hello name="NAME" enthusiasmLevel={1} ></Hello>*/}
         <TouchableHighlight onPress={this.handleGetQualifications}>
-          <Text>click me load qualifications</Text>
+          <Text>Load qualifications</Text>
         </TouchableHighlight>
         <FlatList
             data={this.state.qualifications}
             keyExtractor={(item) => item._id}
-            renderItem={({item}) =>
+            renderItem={({item} : {item: Item}) =>
                 <View>
                   <Text>{`${item.value}:${item.counter}`}</Text>
                 </View>
