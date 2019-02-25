@@ -42,9 +42,9 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{margin: 50}}>Your Typescript project is working!</Text>
-        <TouchableHighlight onPress={this.handleGetQualifications}>
-          <Text>Load qualifications</Text>
+        <TouchableHighlight style={styles.qualificationsBtn} onPress={this.handleGetQualifications}
+         underlayColor="#2c51ff">
+          <Text style={{fontSize: 20}}>Load qualifications</Text>
         </TouchableHighlight>
         <FlatList
             data={this.state.qualifications}
@@ -63,7 +63,19 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    flexDirection: 'row',
   },
+  qualificationsBtn: {
+      alignSelf: 'auto',
+      borderWidth: 1,
+      borderColor: '#2c51ff',
+      backgroundColor: '#80d9ff',
+      borderRadius: 20,
+      marginVertical: 50,
+      marginHorizontal: '10%',
+      width: '80%',
+      height: '10%',
+      alignItems: 'center',
+      justifyContent: 'center',
+  }
 });
