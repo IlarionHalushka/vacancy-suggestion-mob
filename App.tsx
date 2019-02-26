@@ -28,9 +28,11 @@ export default class App extends Component {
       // @ts-ignore
       const data: Qualification[] = await api.getQualifications();
 
-      data.sort((a,b) => b.counter - a.counter);
+      const dataFiltered: Qualification[] = data.filter(item => item.counter > 0);
 
-      this.setState({ qualifications: data, loading: false, showNavigation: true });
+      dataFiltered.sort((a,b) => b.counter - a.counter);
+
+      this.setState({ qualifications: dataFiltered, loading: false, showNavigation: true });
     } catch (err) {
       console.error(err);
       this.setState({
