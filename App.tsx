@@ -8,6 +8,8 @@ import {
   TouchableHighlight,
   TextInput
 } from "react-native";
+
+import { Tabs, Tab, ScrollableTab } from "native-base";
 import api from "./api";
 
 interface Item {
@@ -16,22 +18,32 @@ interface Item {
   counter: number;
 }
 
+interface Vacancy extends Array<Vacancy> {
+  counter: number;
+  vacancyId: number;
+  vacancyName: string;
+  cityName: string;
+}
+
+interface Qualification extends Array<Qualification> {
+  counter: number;
+  value: number;
+  _id: string;
+}
+
 export default class App extends Component {
   state = {
     vacancies: [],
     qualifications: [],
     loading: false,
-    mode: "qualifications"
+    mode: "qualifications",
+    page: 1,
   };
 
   handleGetQualifications = async () => {
     this.setState({ loading: true });
 
     try {
-      interface Qualification extends Array<Qualification> {
-        counter: number;
-      }
-
       // @ts-ignore
       const qualifications: Qualification[] = await api.getQualifications();
 
@@ -44,7 +56,8 @@ export default class App extends Component {
       this.setState({
         qualifications: qualificationsFiltered,
         loading: false,
-        mode: "qualifications"
+        mode: "qualifications",
+        page: 0,
       });
     } catch (err) {
       console.error(err);
@@ -58,17 +71,14 @@ export default class App extends Component {
     this.setState({ loading: true });
 
     try {
-      interface Vacancy extends Array<Vacancy> {
-        counter: number;
-      }
-
       // @ts-ignore
       const vacancies: Vacancy[] = await api.getVacancies({ data: "info" });
 
       this.setState({
         vacancies,
         loading: false,
-        mode: "vacancies"
+        mode: "vacancies",
+        page: 1,
       });
     } catch (err) {
       console.error(err);
@@ -104,36 +114,34 @@ export default class App extends Component {
           </TouchableHighlight>
         </View>
 
-        <FlatList
-          style={{ marginTop: 50 }}
-          data={
-            (this.state.mode === "qualifications" &&
-              this.state.qualifications) ||
-            (this.state.mode === "vacancies" && this.state.vacancies)
-          }
-          keyExtractor={item =>
-            (this.state.mode === "qualifications" && item._id) ||
-            (this.state.mode === "vacancies" && item.vacancyId)
-          }
-          renderItem={({ item }: { item: Item }) =>
-            (this.state.mode === "qualifications" && (
-              <View style={styles.listItem}>
-                <Text style={{ alignSelf: "center" }}>{`${item.value}`}</Text>
-                <Text style={{ alignSelf: "center" }}>{`${item.counter}`}</Text>
-              </View>
-            )) ||
-            (this.state.mode === "vacancies" && (
-              <View style={styles.listItem}>
-                <Text style={{ alignSelf: "center" }}>{`${
-                  item.cityName
-                }`}</Text>
-                <Text style={{ alignSelf: "center" }}>{`${
-                  item.vacancyName
-                }`}</Text>
-              </View>
-            ))
-          }
-        />
+        <Tabs page={this.state.page} style={{ marginTop: 50 }} renderTabBar={() => <ScrollableTab />}>
+          <Tab heading="Qualifications">
+            <FlatList
+              data={this.state.qualifications}
+              keyExtractor={item => item._id}
+              renderItem={({ item }: { item: Qualification }) => (
+                <View style={styles.listItem}>
+                  <Text style={{ alignSelf: "center" }}>{item.value}</Text>
+                  <Text style={{ alignSelf: "center" }}>{item.counter}</Text>
+                </View>
+              )}
+            />
+          </Tab>
+          <Tab heading="Vacancies">
+            <FlatList
+              data={this.state.vacancies}
+              keyExtractor={item => `${item.vacancyId}`}
+              renderItem={({ item }: { item: Vacancy }) => (
+                <View style={styles.listItem}>
+                  <Text style={{ alignSelf: "center" }}>{item.cityName}</Text>
+                  <Text style={{ alignSelf: "center" }}>
+                    {item.vacancyName}
+                  </Text>
+                </View>
+              )}
+            />
+          </Tab>
+        </Tabs>
       </View>
     );
   }
