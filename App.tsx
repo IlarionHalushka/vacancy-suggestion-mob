@@ -6,10 +6,11 @@ import {
   StyleSheet,
   FlatList,
   TouchableHighlight,
-  TextInput
+  TextInput,
+  Modal
 } from "react-native";
 
-import { Tabs, Tab, ScrollableTab } from "native-base";
+import { Tabs, Tab, ScrollableTab, Spinner } from "native-base";
 import api from "./api";
 
 interface Item {
@@ -37,7 +38,7 @@ export default class App extends Component {
     qualifications: [],
     loading: false,
     mode: "qualifications",
-    page: 1,
+    page: 1
   };
 
   handleGetQualifications = async () => {
@@ -57,7 +58,7 @@ export default class App extends Component {
         qualifications: qualificationsFiltered,
         loading: false,
         mode: "qualifications",
-        page: 0,
+        page: 0
       });
     } catch (err) {
       console.error(err);
@@ -78,7 +79,7 @@ export default class App extends Component {
         vacancies,
         loading: false,
         mode: "vacancies",
-        page: 1,
+        page: 1
       });
     } catch (err) {
       console.error(err);
@@ -91,6 +92,21 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
+        {this.state.loading && (
+          <Modal transparent>
+            <View
+              style={{
+                width: "100%",
+                height: "100%",
+                backgroundColor: "aqua",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
+              <Spinner size={"large"} color="blue" />
+            </View>
+          </Modal>
+        )}
         <View
           style={{
             flexDirection: "row",
@@ -114,7 +130,11 @@ export default class App extends Component {
           </TouchableHighlight>
         </View>
 
-        <Tabs page={this.state.page} style={{ marginTop: 50 }} renderTabBar={() => <ScrollableTab />}>
+        <Tabs
+          page={this.state.page}
+          style={{ marginTop: 50 }}
+          renderTabBar={() => <ScrollableTab />}
+        >
           <Tab heading="Qualifications">
             <FlatList
               data={this.state.qualifications}
