@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8732ced8-7260-4518-b89a-5c5bf7abcf3d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/packager-info.json" afterDir="false" />
+    <list default="true" id="8732ced8-7260-4518-b89a-5c5bf7abcf3d" name="Default Changelist" comment="add loader on request sending">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+            <state relative-caret-position="322">
+              <caret line="188" column="24" selection-start-line="188" selection-start-column="24" selection-end-line="188" selection-end-column="24" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -38,6 +35,8 @@
       <find>localhost</find>
       <find>splash</find>
       <find>QUALIFICATION</find>
+      <find>width</find>
+      <find>margin</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -121,7 +120,7 @@
       <workItem from="1550940692894" duration="1194000" />
       <workItem from="1551129679965" duration="5180000" />
       <workItem from="1551212888766" duration="3801000" />
-      <workItem from="1551299476842" duration="1160000" />
+      <workItem from="1551299476842" duration="2076000" />
     </task>
     <task id="LOCAL-00001" summary="add sample Hello world component">
       <created>1550353334683</created>
@@ -200,11 +199,32 @@
       <option name="project" value="LOCAL" />
       <updated>1551216741579</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add native base package">
+      <created>1551301038463</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1551301038463</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add Tabs for switching between Vacancies/Qualifications">
+      <created>1551301073579</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1551301073579</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add loader on request sending">
+      <created>1551301539843</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1551301539843</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17126000" />
+    <option name="totallyTimeSpent" value="18042000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -225,7 +245,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.30273974" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.16849315" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -246,7 +266,10 @@
     <MESSAGE value="display only qualifications with counter &gt; 0" />
     <MESSAGE value="set up prettier" />
     <MESSAGE value="add vacancy fetch button and display vacancy info on list" />
-    <option name="LAST_COMMIT_MESSAGE" value="add vacancy fetch button and display vacancy info on list" />
+    <MESSAGE value="add native base package" />
+    <MESSAGE value="add Tabs for switching between Vacancies/Qualifications" />
+    <MESSAGE value="add loader on request sending" />
+    <option name="LAST_COMMIT_MESSAGE" value="add loader on request sending" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/config/enviroment/test.js">
@@ -293,8 +316,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+        <state relative-caret-position="322">
+          <caret line="188" column="24" selection-start-line="188" selection-start-column="24" selection-end-line="188" selection-end-column="24" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

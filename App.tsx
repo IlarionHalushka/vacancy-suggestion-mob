@@ -10,7 +10,7 @@ import {
   Modal
 } from "react-native";
 
-import { Tabs, Tab, ScrollableTab, Spinner } from "native-base";
+import {Tabs, Tab, ScrollableTab, Spinner, Button} from "native-base";
 import api from "./api";
 
 interface Item {
@@ -104,6 +104,7 @@ export default class App extends Component {
               }}
             >
               <Spinner size={"large"} color="blue" />
+              <Text style={{ color: "blue", fontSize: 24}}>Loading...</Text>
             </View>
           </Modal>
         )}
@@ -114,20 +115,18 @@ export default class App extends Component {
             height: "10%"
           }}
         >
-          <TouchableHighlight
+          <Button
             style={styles.button}
             onPress={this.handleGetVacancies}
-            underlayColor="#2c51ff"
           >
             <Text style={{ fontSize: 20 }}>Vacancies</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
+          </Button>
+          <Button
             style={styles.button}
             onPress={this.handleGetQualifications}
-            underlayColor="#2c51ff"
           >
             <Text style={{ fontSize: 20 }}>Qualifications</Text>
-          </TouchableHighlight>
+          </Button>
         </View>
 
         <Tabs
@@ -187,7 +186,7 @@ const styles = StyleSheet.create({
   },
   listItem: {
     margin: 2,
-    marginHorizontal: "20%",
+    marginHorizontal: "5%",
     borderTopWidth: 1,
     borderTopEndRadius: 10,
     flex: 1,
