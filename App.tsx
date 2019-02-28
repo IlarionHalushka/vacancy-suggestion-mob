@@ -135,6 +135,7 @@ export default class App extends Component {
           renderTabBar={() => <ScrollableTab />}
         >
           <Tab heading="Qualifications">
+            {!this.state.qualifications.length && <Text style={{margin: 10,  alignSelf:'center'}}>No qualifications. Scroll down to refresh</Text>}
             <FlatList
               data={this.state.qualifications}
               keyExtractor={item => item._id}
@@ -147,6 +148,7 @@ export default class App extends Component {
             />
           </Tab>
           <Tab heading="Vacancies">
+            {!this.state.qualifications.length && <Text style={{margin: 10,alignSelf:'center'}}>No vacancies. Scroll down to refresh</Text>}
             <FlatList
               data={this.state.vacancies}
               keyExtractor={item => `${item.vacancyId}`}
