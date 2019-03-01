@@ -7,10 +7,12 @@ import {
   FlatList,
   TouchableHighlight,
   TextInput,
-  Modal
+  Modal,
+  ScrollView,
+  RefreshControl
 } from "react-native";
 
-import {Tabs, Tab, ScrollableTab, Spinner, Button} from "native-base";
+import { Tabs, Tab, ScrollableTab, Spinner, Button } from "native-base";
 import api from "./api";
 
 interface Item {
@@ -37,12 +39,14 @@ export default class App extends Component {
     vacancies: [],
     qualifications: [],
     loading: false,
+    qualificationsLoading: false,
+    vacanciesLoading: false,
     mode: "qualifications",
     page: 1
   };
 
   handleGetQualifications = async () => {
-    this.setState({ loading: true });
+    this.setState({ qualificationsLoading: true });
 
     try {
       // @ts-ignore
@@ -56,7 +60,7 @@ export default class App extends Component {
 
       this.setState({
         qualifications: qualificationsFiltered,
-        loading: false,
+        qualificationsLoading: false,
         mode: "qualifications",
         page: 0
       });
@@ -69,7 +73,7 @@ export default class App extends Component {
   };
 
   handleGetVacancies = async () => {
-    this.setState({ loading: true });
+    this.setState({ vacanciesLoading: true });
 
     try {
       // @ts-ignore
@@ -77,14 +81,14 @@ export default class App extends Component {
 
       this.setState({
         vacancies,
-        loading: false,
+        vacanciesLoading: false,
         mode: "vacancies",
         page: 1
       });
     } catch (err) {
       console.error(err);
       this.setState({
-        loading: false
+        vacanciesLoading: false
       });
     }
   };
@@ -104,7 +108,7 @@ export default class App extends Component {
               }}
             >
               <Spinner size={"large"} color="blue" />
-              <Text style={{ color: "blue", fontSize: 24}}>Loading...</Text>
+              <Text style={{ color: "blue", fontSize: 24 }}>Loading...</Text>
             </View>
           </Modal>
         )}
@@ -115,16 +119,10 @@ export default class App extends Component {
             height: "10%"
           }}
         >
-          <Button
-            style={styles.button}
-            onPress={this.handleGetVacancies}
-          >
+          <Button style={styles.button} onPress={this.handleGetVacancies}>
             <Text style={{ fontSize: 20 }}>Vacancies</Text>
           </Button>
-          <Button
-            style={styles.button}
-            onPress={this.handleGetQualifications}
-          >
+          <Button style={styles.button} onPress={this.handleGetQualifications}>
             <Text style={{ fontSize: 20 }}>Qualifications</Text>
           </Button>
         </View>
@@ -135,32 +133,58 @@ export default class App extends Component {
           renderTabBar={() => <ScrollableTab />}
         >
           <Tab heading="Qualifications">
-            {!this.state.qualifications.length && <Text style={{margin: 10,  alignSelf:'center'}}>No qualifications. Scroll down to refresh</Text>}
-            <FlatList
-              data={this.state.qualifications}
-              keyExtractor={item => item._id}
-              renderItem={({ item }: { item: Qualification }) => (
-                <View style={styles.listItem}>
-                  <Text style={{ alignSelf: "center" }}>{item.value}</Text>
-                  <Text style={{ alignSelf: "center" }}>{item.counter}</Text>
-                </View>
+            <ScrollView
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.qualificationsLoading}
+                  onRefresh={() => this.handleGetQualifications()}
+                />
+              }
+            >
+              {!this.state.qualifications.length && (
+                <Text style={{ margin: 10, alignSelf: "center" }}>
+                  No qualifications. Scroll down to refresh
+                </Text>
               )}
-            />
+              <FlatList
+                data={this.state.qualifications}
+                keyExtractor={item => item._id}
+                renderItem={({ item }: { item: Qualification }) => (
+                  <View style={styles.listItem}>
+                    <Text style={{ alignSelf: "center" }}>{item.value}</Text>
+                    <Text style={{ alignSelf: "center" }}>{item.counter}</Text>
+                  </View>
+                )}
+              />
+            </ScrollView>
           </Tab>
           <Tab heading="Vacancies">
-            {!this.state.qualifications.length && <Text style={{margin: 10,alignSelf:'center'}}>No vacancies. Scroll down to refresh</Text>}
-            <FlatList
-              data={this.state.vacancies}
-              keyExtractor={item => `${item.vacancyId}`}
-              renderItem={({ item }: { item: Vacancy }) => (
-                <View style={styles.listItem}>
-                  <Text style={{ alignSelf: "center" }}>{item.cityName}</Text>
-                  <Text style={{ alignSelf: "center" }}>
-                    {item.vacancyName}
-                  </Text>
-                </View>
+            <ScrollView
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.vacanciesLoading}
+                  onRefresh={() => this.handleGetVacancies()}
+                />
+              }
+            >
+              {!this.state.qualifications.length && (
+                <Text style={{ margin: 10, alignSelf: "center" }}>
+                  No vacancies. Scroll down to refresh
+                </Text>
               )}
-            />
+              <FlatList
+                data={this.state.vacancies}
+                keyExtractor={item => `${item.vacancyId}`}
+                renderItem={({ item }: { item: Vacancy }) => (
+                  <View style={styles.listItem}>
+                    <Text style={{ alignSelf: "center" }}>{item.cityName}</Text>
+                    <Text style={{ alignSelf: "center" }}>
+                      {item.vacancyName}
+                    </Text>
+                  </View>
+                )}
+              />
+            </ScrollView>
           </Tab>
         </Tabs>
       </View>
