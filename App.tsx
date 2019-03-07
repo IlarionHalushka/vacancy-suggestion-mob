@@ -5,8 +5,6 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  TouchableHighlight,
-  TextInput,
   Modal,
   ScrollView,
   RefreshControl
@@ -14,6 +12,7 @@ import {
 
 import { Tabs, Tab, ScrollableTab, Spinner, Button } from "native-base";
 import api from "./api";
+import { tableStatuses } from './config';
 
 interface Item {
   _id: string;
@@ -41,7 +40,7 @@ export default class App extends Component {
     loading: false,
     qualificationsLoading: false,
     vacanciesLoading: false,
-    mode: "qualifications",
+    mode: tableStatuses.QUALIFICATIONS,
     page: 1
   };
 
@@ -61,7 +60,7 @@ export default class App extends Component {
       this.setState({
         qualifications: qualificationsFiltered,
         qualificationsLoading: false,
-        mode: "qualifications",
+        mode: tableStatuses.QUALIFICATIONS,
         page: 0
       });
     } catch (err) {
@@ -82,7 +81,7 @@ export default class App extends Component {
       this.setState({
         vacancies,
         vacanciesLoading: false,
-        mode: "vacancies",
+        mode: tableStatuses.VACANCIES,
         page: 1
       });
     } catch (err) {
@@ -118,7 +117,7 @@ export default class App extends Component {
           style={styles.tabs}
           renderTabBar={() => <ScrollableTab />}
         >
-          <Tab heading="Qualifications">
+          <Tab heading={tableStatuses.QUALIFICATIONS}>
             <ScrollView
               refreshControl={
                 <RefreshControl
@@ -145,7 +144,7 @@ export default class App extends Component {
               )}
             </ScrollView>
           </Tab>
-          <Tab heading="Vacancies">
+          <Tab heading={tableStatuses.VACANCIES}>
             <ScrollView
               refreshControl={
                 <RefreshControl
