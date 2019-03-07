@@ -127,21 +127,22 @@ export default class App extends Component {
                 />
               }
             >
-              {!this.state.qualifications.length && (
+              {!this.state.qualifications.length ? (
                 <Text style={styles.noDataText}>
                   No qualifications. Scroll down to refresh
                 </Text>
+              ) : (
+                <FlatList
+                  data={this.state.qualifications}
+                  keyExtractor={item => item._id}
+                  renderItem={({ item }: { item: Qualification }) => (
+                    <View style={styles.listItem}>
+                      <Text style={styles.tableText}>{item.value}</Text>
+                      <Text style={styles.tableText}>{item.counter}</Text>
+                    </View>
+                  )}
+                />
               )}
-              <FlatList
-                data={this.state.qualifications}
-                keyExtractor={item => item._id}
-                renderItem={({ item }: { item: Qualification }) => (
-                  <View style={styles.listItem}>
-                    <Text style={styles.tableText}>{item.value}</Text>
-                    <Text style={styles.tableText}>{item.counter}</Text>
-                  </View>
-                )}
-              />
             </ScrollView>
           </Tab>
           <Tab heading="Vacancies">
@@ -153,21 +154,22 @@ export default class App extends Component {
                 />
               }
             >
-              {!this.state.qualifications.length && (
+              {!this.state.vacancies.length ? (
                 <Text style={styles.noDataText}>
                   No vacancies. Scroll down to refresh
                 </Text>
+              ) : (
+                <FlatList
+                  data={this.state.vacancies}
+                  keyExtractor={item => `${item.vacancyId}`}
+                  renderItem={({ item }: { item: Vacancy }) => (
+                    <View style={styles.listItem}>
+                      <Text style={styles.tableText}>{item.cityName}</Text>
+                      <Text style={styles.tableText}>{item.vacancyName}</Text>
+                    </View>
+                  )}
+                />
               )}
-              <FlatList
-                data={this.state.vacancies}
-                keyExtractor={item => `${item.vacancyId}`}
-                renderItem={({ item }: { item: Vacancy }) => (
-                  <View style={styles.listItem}>
-                    <Text style={styles.tableText}>{item.cityName}</Text>
-                    <Text style={styles.tableText}>{item.vacancyName}</Text>
-                  </View>
-                )}
-              />
             </ScrollView>
           </Tab>
         </Tabs>
