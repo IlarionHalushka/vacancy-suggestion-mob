@@ -98,38 +98,24 @@ export default class App extends Component {
       <View style={styles.container}>
         {this.state.loading && (
           <Modal transparent>
-            <View
-              style={{
-                width: "100%",
-                height: "100%",
-                backgroundColor: "aqua",
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
+            <View style={styles.loadingModal}>
               <Spinner size={"large"} color="blue" />
-              <Text style={{ color: "blue", fontSize: 24 }}>Loading...</Text>
+              <Text style={styles.loaderText}>Loading...</Text>
             </View>
           </Modal>
         )}
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-around",
-            height: "10%"
-          }}
-        >
+        <View style={styles.actionButtonsContainer}>
           <Button style={styles.button} onPress={this.handleGetVacancies}>
-            <Text style={{ fontSize: 20 }}>Vacancies</Text>
+            <Text style={styles.actionButtonText}>Vacancies</Text>
           </Button>
           <Button style={styles.button} onPress={this.handleGetQualifications}>
-            <Text style={{ fontSize: 20 }}>Qualifications</Text>
+            <Text style={styles.actionButtonText}>Qualifications</Text>
           </Button>
         </View>
 
         <Tabs
           page={this.state.page}
-          style={{ marginTop: 50 }}
+          style={styles.tabs}
           renderTabBar={() => <ScrollableTab />}
         >
           <Tab heading="Qualifications">
@@ -142,7 +128,7 @@ export default class App extends Component {
               }
             >
               {!this.state.qualifications.length && (
-                <Text style={{ margin: 10, alignSelf: "center" }}>
+                <Text style={styles.noDataText}>
                   No qualifications. Scroll down to refresh
                 </Text>
               )}
@@ -151,8 +137,8 @@ export default class App extends Component {
                 keyExtractor={item => item._id}
                 renderItem={({ item }: { item: Qualification }) => (
                   <View style={styles.listItem}>
-                    <Text style={{ alignSelf: "center" }}>{item.value}</Text>
-                    <Text style={{ alignSelf: "center" }}>{item.counter}</Text>
+                    <Text style={styles.tableText}>{item.value}</Text>
+                    <Text style={styles.tableText}>{item.counter}</Text>
                   </View>
                 )}
               />
@@ -168,7 +154,7 @@ export default class App extends Component {
               }
             >
               {!this.state.qualifications.length && (
-                <Text style={{ margin: 10, alignSelf: "center" }}>
+                <Text style={styles.noDataText}>
                   No vacancies. Scroll down to refresh
                 </Text>
               )}
@@ -177,10 +163,8 @@ export default class App extends Component {
                 keyExtractor={item => `${item.vacancyId}`}
                 renderItem={({ item }: { item: Vacancy }) => (
                   <View style={styles.listItem}>
-                    <Text style={{ alignSelf: "center" }}>{item.cityName}</Text>
-                    <Text style={{ alignSelf: "center" }}>
-                      {item.vacancyName}
-                    </Text>
+                    <Text style={styles.tableText}>{item.cityName}</Text>
+                    <Text style={styles.tableText}>{item.vacancyName}</Text>
                   </View>
                 )}
               />
@@ -195,7 +179,6 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
-    // justifyContent: "center"
   },
   button: {
     alignSelf: "auto",
@@ -218,5 +201,28 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between"
-  }
+  },
+  loadingModal: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "aqua",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  actionButtonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    height: "10%"
+  },
+  loaderText: {
+    color: "blue",
+    fontSize: 24
+  },
+  actionButtonText: { fontSize: 20 },
+  noDataText: {
+    margin: 10,
+    alignSelf: "center"
+  },
+  tableText: { alignSelf: "center" },
+  tabs: { marginTop: 50 }
 });
