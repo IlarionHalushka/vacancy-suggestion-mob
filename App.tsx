@@ -5,12 +5,11 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  Modal,
   ScrollView,
   RefreshControl
 } from "react-native";
 
-import { Tabs, Tab, ScrollableTab, Spinner, Button } from "native-base";
+import { Tabs, Tab, ScrollableTab, Button } from "native-base";
 import api from "./api";
 import { config } from "./config";
 
@@ -37,7 +36,6 @@ export default class App extends Component {
   state = {
     vacancies: [],
     qualifications: [],
-    loading: false,
     qualificationsLoading: false,
     vacanciesLoading: false,
     page: 0
@@ -64,7 +62,7 @@ export default class App extends Component {
     } catch (err) {
       console.error(err);
       this.setState({
-        loading: false
+        qualificationsLoading: false
       });
     }
   };
@@ -92,14 +90,6 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.state.loading && (
-          <Modal transparent>
-            <View style={styles.loadingModal}>
-              <Spinner size={"large"} color="blue" />
-              <Text style={styles.loaderText}>Loading...</Text>
-            </View>
-          </Modal>
-        )}
         <View style={styles.actionButtonsContainer}>
           <Button style={styles.button} onPress={this.handleGetQualifications}>
             <Text style={styles.actionButtonText}>Qualifications</Text>
@@ -199,13 +189,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between"
-  },
-  loadingModal: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: "aqua",
-    alignItems: "center",
-    justifyContent: "center"
   },
   actionButtonsContainer: {
     flexDirection: "row",
