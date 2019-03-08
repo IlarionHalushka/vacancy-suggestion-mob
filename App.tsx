@@ -40,8 +40,7 @@ export default class App extends Component {
     loading: false,
     qualificationsLoading: false,
     vacanciesLoading: false,
-    mode: config.tableStatuses.QUALIFICATIONS,
-    page: 1
+    page: 0
   };
 
   handleGetQualifications = async () => {
@@ -60,7 +59,6 @@ export default class App extends Component {
       this.setState({
         qualifications: qualificationsFiltered,
         qualificationsLoading: false,
-        mode: config.tableStatuses.QUALIFICATIONS,
         page: 0
       });
     } catch (err) {
@@ -81,7 +79,6 @@ export default class App extends Component {
       this.setState({
         vacancies,
         vacanciesLoading: false,
-        mode: config.tableStatuses.VACANCIES,
         page: 1
       });
     } catch (err) {
@@ -104,11 +101,11 @@ export default class App extends Component {
           </Modal>
         )}
         <View style={styles.actionButtonsContainer}>
-          <Button style={styles.button} onPress={this.handleGetVacancies}>
-            <Text style={styles.actionButtonText}>Vacancies</Text>
-          </Button>
           <Button style={styles.button} onPress={this.handleGetQualifications}>
             <Text style={styles.actionButtonText}>Qualifications</Text>
+          </Button>
+          <Button style={styles.button} onPress={this.handleGetVacancies}>
+            <Text style={styles.actionButtonText}>Vacancies</Text>
           </Button>
         </View>
 
