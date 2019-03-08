@@ -12,7 +12,7 @@ import {
 
 import { Tabs, Tab, ScrollableTab, Spinner, Button } from "native-base";
 import api from "./api";
-import { tableStatuses } from './config';
+import { config } from "./config";
 
 interface Item {
   _id: string;
@@ -40,7 +40,7 @@ export default class App extends Component {
     loading: false,
     qualificationsLoading: false,
     vacanciesLoading: false,
-    mode: tableStatuses.QUALIFICATIONS,
+    mode: config.tableStatuses.QUALIFICATIONS,
     page: 1
   };
 
@@ -60,7 +60,7 @@ export default class App extends Component {
       this.setState({
         qualifications: qualificationsFiltered,
         qualificationsLoading: false,
-        mode: tableStatuses.QUALIFICATIONS,
+        mode: config.tableStatuses.QUALIFICATIONS,
         page: 0
       });
     } catch (err) {
@@ -81,7 +81,7 @@ export default class App extends Component {
       this.setState({
         vacancies,
         vacanciesLoading: false,
-        mode: tableStatuses.VACANCIES,
+        mode: config.tableStatuses.VACANCIES,
         page: 1
       });
     } catch (err) {
@@ -117,7 +117,7 @@ export default class App extends Component {
           style={styles.tabs}
           renderTabBar={() => <ScrollableTab />}
         >
-          <Tab heading={tableStatuses.QUALIFICATIONS}>
+          <Tab heading={config.tableStatuses.QUALIFICATIONS}>
             <ScrollView
               refreshControl={
                 <RefreshControl
@@ -144,7 +144,7 @@ export default class App extends Component {
               )}
             </ScrollView>
           </Tab>
-          <Tab heading={tableStatuses.VACANCIES}>
+          <Tab heading={config.tableStatuses.VACANCIES}>
             <ScrollView
               refreshControl={
                 <RefreshControl

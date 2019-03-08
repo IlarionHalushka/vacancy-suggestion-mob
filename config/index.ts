@@ -1,5 +1,5 @@
 import { default as tableStatuses } from "./tableStatuses";
 
-export default {
+export const config = {
   tableStatuses
 };
