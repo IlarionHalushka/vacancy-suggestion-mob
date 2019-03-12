@@ -12,7 +12,6 @@ import {
 import { Tabs, Tab, ScrollableTab, Button } from "native-base";
 import api from "./api";
 import { config } from "./config";
-import { TfImageRecognition } from 'react-native-tensorflow';
 
 
 interface Item {
@@ -89,35 +88,6 @@ export default class App extends Component {
     }
   };
 
-  classifyImage = async () => {
-
-    const tfImageRecognition = new TfImageRecognition({
-      model: require('./assets/tensorflow_inception_graph.pb'),
-      labels: require('./assets/tensorflow_labels.txt'),
-      imageMean: 117, // Optional, defaults to 117
-      imageStd: 1 // Optional, defaults to 1
-    })
-
-    const results = await tfImageRecognition.recognize({
-      image: require('./assets/62751e994c55ec5072b86b3036f331a4.jpg'),
-      inputName: "input", //Optional, defaults to "input"
-      inputSize: 224, //Optional, defaults to 224
-      outputName: "output", //Optional, defaults to "output"
-      maxResults: 3, //Optional, defaults to 3
-      threshold: 0.1, //Optional, defaults to 0.1
-    });
-
-    results.forEach((result) =>
-        console.log(
-            result.id, // Id of the result
-            result.name, // Name of the result
-            result.confidence // Confidence value between 0 - 1
-        )
-    );
-
-    await tfImageRecognition.close() // Necessary in order to release objects on native side
-  }
-
   render() {
     return (
       <View style={styles.container}>
@@ -127,9 +97,6 @@ export default class App extends Component {
           </Button>
           <Button style={styles.button} onPress={this.handleGetVacancies}>
             <Text style={styles.actionButtonText}>Vacancies</Text>
-          </Button>
-          <Button style={styles.button} onPress={this.classifyImage}>
-            <Text style={styles.actionButtonText}>Classify</Text>
           </Button>
         </View>
 
