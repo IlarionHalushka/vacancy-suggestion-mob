@@ -10,6 +10,7 @@ import {
 } from "react-native";
 
 import { Tabs, Tab, ScrollableTab } from "native-base";
+import { TabContainer } from "./TabContainer";
 import api from "./api";
 import { config } from "./config";
 
@@ -37,7 +38,7 @@ export default class App extends Component {
     vacancies: [],
     qualifications: [],
     qualificationsLoading: false,
-    vacanciesLoading: false,
+    vacanciesLoading: false
   };
 
   handleGetQualifications = async () => {
@@ -55,7 +56,7 @@ export default class App extends Component {
 
       this.setState({
         qualifications: qualificationsFiltered,
-        qualificationsLoading: false,
+        qualificationsLoading: false
       });
     } catch (err) {
       console.error(err);
@@ -74,7 +75,7 @@ export default class App extends Component {
 
       this.setState({
         vacancies,
-        vacanciesLoading: false,
+        vacanciesLoading: false
       });
     } catch (err) {
       console.error(err);
@@ -84,66 +85,37 @@ export default class App extends Component {
     }
   };
 
+  renderQualifications = item => (
+    <View style={styles.listItem}>
+      <Text style={styles.tableText}>{item.value}</Text>
+      <Text style={styles.tableText}>{item.counter}</Text>
+    </View>
+  );
+
+  renderVacancies = item => (
+    <View style={styles.listItem}>
+      <Text style={styles.tableText}>{item.cityName}</Text>
+      <Text style={styles.tableText}>{item.vacancyName}</Text>
+    </View>
+  );
+
   render() {
     return (
       <View style={styles.container}>
-        <Tabs
-          style={styles.tabs}
-          renderTabBar={() => <ScrollableTab />}
-        >
+        <Tabs style={styles.tabs} renderTabBar={() => <ScrollableTab />}>
           <Tab heading={config.tableStatuses.QUALIFICATIONS}>
-            <ScrollView
-              refreshControl={
-                <RefreshControl
-                  refreshing={this.state.qualificationsLoading}
-                  onRefresh={() => this.handleGetQualifications()}
-                />
-              }
-            >
-              {!this.state.qualifications.length ? (
-                <Text style={styles.noDataText}>
-                  No qualifications. Scroll down to refresh
-                </Text>
-              ) : (
-                <FlatList
-                  data={this.state.qualifications}
-                  keyExtractor={item => item._id}
-                  renderItem={({ item }: { item: Qualification }) => (
-                    <View style={styles.listItem}>
-                      <Text style={styles.tableText}>{item.value}</Text>
-                      <Text style={styles.tableText}>{item.counter}</Text>
-                    </View>
-                  )}
-                />
-              )}
-            </ScrollView>
+            <TabContainer
+              loadData={this.handleGetQualifications}
+              data={this.state.qualifications}
+              renderRow={this.renderQualifications}
+            />
           </Tab>
           <Tab heading={config.tableStatuses.VACANCIES}>
-            <ScrollView
-              refreshControl={
-                <RefreshControl
-                  refreshing={this.state.vacanciesLoading}
-                  onRefresh={() => this.handleGetVacancies()}
-                />
-              }
-            >
-              {!this.state.vacancies.length ? (
-                <Text style={styles.noDataText}>
-                  No vacancies. Scroll down to refresh
-                </Text>
-              ) : (
-                <FlatList
-                  data={this.state.vacancies}
-                  keyExtractor={item => `${item.vacancyId}`}
-                  renderItem={({ item }: { item: Vacancy }) => (
-                    <View style={styles.listItem}>
-                      <Text style={styles.tableText}>{item.cityName}</Text>
-                      <Text style={styles.tableText}>{item.vacancyName}</Text>
-                    </View>
-                  )}
-                />
-              )}
-            </ScrollView>
+            <TabContainer
+              loadData={this.handleGetVacancies}
+              data={this.state.vacancies}
+              renderRow={this.renderVacancies}
+            />
           </Tab>
         </Tabs>
       </View>
