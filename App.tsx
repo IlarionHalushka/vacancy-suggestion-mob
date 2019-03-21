@@ -160,19 +160,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  button: {
-    alignSelf: "auto",
-    borderWidth: 1,
-    borderColor: "#2c51ff",
-    backgroundColor: "#80d9ff",
-    borderRadius: 20,
-    marginTop: 25,
-    marginBottom: 0,
-    width: "40%",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center"
-  },
   listItem: {
     margin: 2,
     marginHorizontal: "5%",
@@ -181,11 +168,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between"
-  },
-  actionButtonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    height: "10%"
   },
   loaderText: {
     color: "blue",
