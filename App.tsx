@@ -9,10 +9,9 @@ import {
   RefreshControl
 } from "react-native";
 
-import { Tabs, Tab, ScrollableTab, Button } from "native-base";
+import { Tabs, Tab, ScrollableTab } from "native-base";
 import api from "./api";
 import { config } from "./config";
-
 
 interface Item {
   _id: string;
@@ -39,7 +38,6 @@ export default class App extends Component {
     qualifications: [],
     qualificationsLoading: false,
     vacanciesLoading: false,
-    page: 0
   };
 
   handleGetQualifications = async () => {
@@ -58,7 +56,6 @@ export default class App extends Component {
       this.setState({
         qualifications: qualificationsFiltered,
         qualificationsLoading: false,
-        page: 0
       });
     } catch (err) {
       console.error(err);
@@ -78,7 +75,6 @@ export default class App extends Component {
       this.setState({
         vacancies,
         vacanciesLoading: false,
-        page: 1
       });
     } catch (err) {
       console.error(err);
@@ -92,7 +88,6 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <Tabs
-          page={this.state.page}
           style={styles.tabs}
           renderTabBar={() => <ScrollableTab />}
         >
