@@ -91,15 +91,6 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.actionButtonsContainer}>
-          <Button style={styles.button} onPress={this.handleGetQualifications}>
-            <Text style={styles.actionButtonText}>Qualifications</Text>
-          </Button>
-          <Button style={styles.button} onPress={this.handleGetVacancies}>
-            <Text style={styles.actionButtonText}>Vacancies</Text>
-          </Button>
-        </View>
-
         <Tabs
           page={this.state.page}
           style={styles.tabs}
