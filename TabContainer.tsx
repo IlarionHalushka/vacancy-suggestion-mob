@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Component } from "react";
 import {
-  View,
   Text,
   StyleSheet,
   FlatList,
@@ -23,15 +22,11 @@ export class TabContainer extends Component {
       // @ts-ignore
       const data = await loadData();
 
-      this.setState({
-        data,
-        isRefreshing: false
-      });
+      this.setState({ data });
     } catch (err) {
       console.error(err);
-      this.setState({
-        isRefreshing: false
-      });
+    } finally {
+      this.setState({ isRefreshing: false });
     }
   };
 

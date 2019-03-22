@@ -1,21 +1,10 @@
 import * as React from "react";
 import { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-} from "react-native";
-
+import { View, Text, StyleSheet } from "react-native";
 import { Tabs, Tab, ScrollableTab } from "native-base";
 import { TabContainer } from "./TabContainer";
 import api from "./api";
 import { config } from "./config";
-
-interface Item {
-  _id: string;
-  value: string;
-  counter: number;
-}
 
 interface Vacancy extends Array<Vacancy> {
   counter: number;
@@ -44,7 +33,7 @@ export default class App extends Component {
       const qualificationsFiltered: Qualification[] = qualifications.filter(
         item => item.counter > 0
       );
-
+      // TODO add sorting on back-end
       qualificationsFiltered.sort((a, b) => b.counter - a.counter);
 
       this.setState({ qualifications: qualificationsFiltered });
