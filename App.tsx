@@ -4,9 +4,6 @@ import {
   View,
   Text,
   StyleSheet,
-  FlatList,
-  ScrollView,
-  RefreshControl
 } from "react-native";
 
 import { Tabs, Tab, ScrollableTab } from "native-base";
@@ -36,14 +33,10 @@ interface Qualification extends Array<Qualification> {
 export default class App extends Component {
   state = {
     vacancies: [],
-    qualifications: [],
-    qualificationsLoading: false,
-    vacanciesLoading: false
+    qualifications: []
   };
 
   handleGetQualifications = async () => {
-    this.setState({ qualificationsLoading: true });
-
     try {
       // @ts-ignore
       const qualifications: Qualification[] = await api.getQualifications();
@@ -54,34 +47,20 @@ export default class App extends Component {
 
       qualificationsFiltered.sort((a, b) => b.counter - a.counter);
 
-      this.setState({
-        qualifications: qualificationsFiltered,
-        qualificationsLoading: false
-      });
+      this.setState({ qualifications: qualificationsFiltered });
     } catch (err) {
       console.error(err);
-      this.setState({
-        qualificationsLoading: false
-      });
     }
   };
 
   handleGetVacancies = async () => {
-    this.setState({ vacanciesLoading: true });
-
     try {
       // @ts-ignore
       const vacancies: Vacancy[] = await api.getVacancies({ data: "info" });
 
-      this.setState({
-        vacancies,
-        vacanciesLoading: false
-      });
+      this.setState({ vacancies });
     } catch (err) {
       console.error(err);
-      this.setState({
-        vacanciesLoading: false
-      });
     }
   };
 
