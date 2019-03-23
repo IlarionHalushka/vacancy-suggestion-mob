@@ -45,7 +45,7 @@ export class TabContainer extends Component {
         ) : (
           <FlatList
             data={this.props.data}
-            keyExtractor={item => item._id}
+            keyExtractor={item => item.vacancyId}
             renderItem={({ item }) => this.props.renderRow(item)}
           />
         )}
