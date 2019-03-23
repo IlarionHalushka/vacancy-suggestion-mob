@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { Tabs, Tab, ScrollableTab } from "native-base";
+import { Tabs, Tab, ScrollableTab, Button, Input, Item } from "native-base";
 import { TabContainer } from "./TabContainer";
 import api from "./api";
 import { config } from "./config";
@@ -22,7 +22,8 @@ interface Qualification extends Array<Qualification> {
 export default class App extends Component {
   state = {
     vacancies: [],
-    qualifications: []
+    qualifications: [],
+    skill: ''
   };
 
   handleGetQualifications = async () => {
@@ -44,8 +45,11 @@ export default class App extends Component {
 
   handleGetVacancies = async () => {
     try {
+      const { skill } = this.state;
       // @ts-ignore
-      const vacancies: Vacancy[] = await api.getVacancies({ data: "info" });
+      const vacancies: Vacancy[] = await api.getVacancies({
+        data: { skills: [{ skill: skill }] }
+      });
 
       this.setState({ vacancies });
     } catch (err) {
@@ -79,6 +83,15 @@ export default class App extends Component {
             />
           </Tab>
           <Tab heading={config.tableStatuses.VACANCIES}>
+            <Item>
+              <Input
+                placeholder="Type skill here"
+                onChangeText={skill => this.setState({ skill })}
+              />
+            </Item>
+            <Button onPress={this.handleGetVacancies}>
+              <Text>Get Vacancies</Text>
+            </Button>
             <TabContainer
               loadData={this.handleGetVacancies}
               data={this.state.vacancies}
