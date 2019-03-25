@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, AsyncStorage } from "react-native";
 import { Tabs, Tab, ScrollableTab, Button, Input, Item } from "native-base";
 import { TabContainer } from "./TabContainer";
 import api from "./api";
@@ -24,6 +24,13 @@ export default class App extends Component {
     vacancies: [],
     qualifications: [],
     skill: ''
+  };
+
+  async componentDidMount(): void {
+    await AsyncStorage.setItem('theme', 'dark');
+    // @ts-ignore
+    global.theme = await AsyncStorage.getItem('theme');
+    console.log(global.theme);
   };
 
   handleGetQualifications = async () => {
