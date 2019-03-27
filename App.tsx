@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Component } from "react";
-import { View, Text, StyleSheet, AsyncStorage } from "react-native";
+import { View, Text, StyleSheet, AsyncStorage, Switch } from "react-native";
 import { Tabs, Tab, ScrollableTab, Button, Input, Item } from "native-base";
 import { TabContainer } from "./TabContainer";
 import api from "./api";
@@ -23,15 +23,16 @@ export default class App extends Component {
   state = {
     vacancies: [],
     qualifications: [],
-    skill: ''
+    skill: "",
+    theme: "light"
   };
 
   async componentDidMount(): void {
-    await AsyncStorage.setItem('theme', 'dark');
     // @ts-ignore
-    global.theme = await AsyncStorage.getItem('theme');
+    global.theme = await AsyncStorage.getItem("theme");
+    global.theme && this.setState({ theme: global.theme });
     console.log(global.theme);
-  };
+  }
 
   handleGetQualifications = async () => {
     try {
@@ -64,6 +65,19 @@ export default class App extends Component {
     }
   };
 
+  handleThemeChange = async () => {
+    try {
+      const { theme } = this.state;
+      // @ts-ignore
+      const newTheme = theme === "dark" ? "light" : "dark";
+
+      this.setState({ theme: newTheme });
+      console.log("handleThemeChange:", this.state.theme);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   renderQualifications = item => (
     <View style={styles.listItem}>
       <Text style={styles.tableText}>{item.value}</Text>
@@ -81,6 +95,14 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Item style={{ display: "flex", justifyContent: "center", marginTop: 70 }}>
+          <Text>Night mode:</Text>
+          <Switch
+            style={{ alignSelf: "center" }}
+            onValueChange={() => this.handleThemeChange()}
+            value={this.state.theme === "light"}
+          />
+        </Item>
         <Tabs style={styles.tabs} renderTabBar={() => <ScrollableTab />}>
           <Tab heading={config.tableStatuses.QUALIFICATIONS}>
             <TabContainer
@@ -134,5 +156,5 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   tableText: { alignSelf: "center" },
-  tabs: { marginTop: 50 }
+  tabs: { marginTop: 20 }
 });
