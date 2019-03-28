@@ -94,8 +94,15 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Item style={{ display: "flex", justifyContent: "center", marginTop: 70 }}>
+      <View
+        style={[
+          styles.container,
+          { backgroundColor: this.state.theme === "light" ? "white" : "blue" }
+        ]}
+      >
+        <Item
+          style={{ display: "flex", justifyContent: "center", marginTop: 70 }}
+        >
           <Text>Night mode:</Text>
           <Switch
             style={{ alignSelf: "center" }}

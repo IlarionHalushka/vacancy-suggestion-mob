@@ -20,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="158" column="23" selection-start-line="158" selection-start-column="23" selection-end-line="158" selection-end-column="23" />
+            <state relative-caret-position="174">
+              <caret line="102" column="13" lean-forward="true" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -79,13 +79,14 @@
   <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="704" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -112,7 +113,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -178,7 +178,8 @@
       <workItem from="1553522448944" duration="29000" />
       <workItem from="1553522698706" duration="2648000" />
       <workItem from="1553621666445" duration="34000" />
-      <workItem from="1553719771433" duration="691000" />
+      <workItem from="1553719771433" duration="832000" />
+      <workItem from="1553804050557" duration="557000" />
     </task>
     <task id="LOCAL-00001" summary="add sample Hello world component">
       <created>1550353334683</created>
@@ -439,11 +440,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553549580509</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="add theme switch which is saved in AsyncStorage">
+      <created>1553720499568</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1553720499568</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35646000" />
+    <option name="totallyTimeSpent" value="36344000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -479,7 +487,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add Tabs for switching between Vacancies/Qualifications" />
     <MESSAGE value="add loader on request sending" />
     <MESSAGE value="style button and tables" />
     <MESSAGE value="add no data qualifications/vacancies messages" />
@@ -504,7 +511,8 @@
     <MESSAGE value="fix the keyExtractor in FlatList to vacancyId" />
     <MESSAGE value="add functionality for searching vacancies by a skill provided in input" />
     <MESSAGE value="test global object in react native" />
-    <option name="LAST_COMMIT_MESSAGE" value="test global object in react native" />
+    <MESSAGE value="add theme switch which is saved in AsyncStorage" />
+    <option name="LAST_COMMIT_MESSAGE" value="add theme switch which is saved in AsyncStorage" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -614,8 +622,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="158" column="23" selection-start-line="158" selection-start-column="23" selection-end-line="158" selection-end-column="23" />
+        <state relative-caret-position="174">
+          <caret line="102" column="13" lean-forward="true" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
