@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8732ced8-7260-4518-b89a-5c5bf7abcf3d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/packager-info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
     </list>
@@ -20,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="102" column="13" lean-forward="true" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
+            <state relative-caret-position="235">
+              <caret line="119" column="25" lean-forward="true" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -179,7 +178,7 @@
       <workItem from="1553522698706" duration="2648000" />
       <workItem from="1553621666445" duration="34000" />
       <workItem from="1553719771433" duration="832000" />
-      <workItem from="1553804050557" duration="557000" />
+      <workItem from="1553804050557" duration="630000" />
     </task>
     <task id="LOCAL-00001" summary="add sample Hello world component">
       <created>1550353334683</created>
@@ -447,11 +446,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553720499568</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="change background on theme state change">
+      <created>1553804807898</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1553804807898</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36344000" />
+    <option name="totallyTimeSpent" value="36417000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -487,7 +493,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add loader on request sending" />
     <MESSAGE value="style button and tables" />
     <MESSAGE value="add no data qualifications/vacancies messages" />
     <MESSAGE value="add loaders on tabs, scroll to refresh, no data messages" />
@@ -512,7 +517,8 @@
     <MESSAGE value="add functionality for searching vacancies by a skill provided in input" />
     <MESSAGE value="test global object in react native" />
     <MESSAGE value="add theme switch which is saved in AsyncStorage" />
-    <option name="LAST_COMMIT_MESSAGE" value="add theme switch which is saved in AsyncStorage" />
+    <MESSAGE value="change background on theme state change" />
+    <option name="LAST_COMMIT_MESSAGE" value="change background on theme state change" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -622,8 +628,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="102" column="13" lean-forward="true" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
+        <state relative-caret-position="235">
+          <caret line="119" column="25" lean-forward="true" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

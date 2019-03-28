@@ -111,14 +111,27 @@ export default class App extends Component {
           />
         </Item>
         <Tabs style={styles.tabs} renderTabBar={() => <ScrollableTab />}>
-          <Tab heading={config.tableStatuses.QUALIFICATIONS}>
+          <Tab
+            heading={config.tableStatuses.QUALIFICATIONS}
+            style={{
+              backgroundColor: this.state.theme === "light" ? "white" : "blue"
+            }}
+          >
             <TabContainer
               loadData={this.handleGetQualifications}
               data={this.state.qualifications}
               renderRow={this.renderQualifications}
+              style={{
+                backgroundColor: this.state.theme === "light" ? "white" : "blue"
+              }}
             />
           </Tab>
-          <Tab heading={config.tableStatuses.VACANCIES}>
+          <Tab
+            heading={config.tableStatuses.VACANCIES}
+            style={{
+              backgroundColor: this.state.theme === "light" ? "white" : "blue"
+            }}
+          >
             <Item>
               <Input
                 placeholder="Type skill here"
@@ -132,6 +145,9 @@ export default class App extends Component {
               loadData={this.handleGetVacancies}
               data={this.state.vacancies}
               renderRow={this.renderVacancies}
+              style={{
+                backgroundColor: this.state.theme === "light" ? "white" : "blue"
+              }}
             />
           </Tab>
         </Tabs>
