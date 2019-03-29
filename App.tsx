@@ -6,6 +6,15 @@ import { TabContainer } from "./TabContainer";
 import api from "./api";
 import { config } from "./config";
 
+import themeLib from "react-native-theme";
+
+// Setup Themes
+themeLib.add(require("./theme/default"));
+// themeLib.addComponents({ Example: require("./ThemeExample") });
+
+themeLib.add(require("./theme/night"), "night");
+// themeLib.addComponents({ Example: require("./RedExample") }, "night");
+
 interface Vacancy extends Array<Vacancy> {
   counter: number;
   vacancyId: number;
@@ -24,14 +33,16 @@ export default class App extends Component {
     vacancies: [],
     qualifications: [],
     skill: "",
-    theme: "light"
+    theme: "default"
   };
 
   async componentDidMount(): void {
     // @ts-ignore
-    global.theme = await AsyncStorage.getItem("theme");
-    global.theme && this.setState({ theme: global.theme });
-    console.log(global.theme);
+    const themeFromStorage = await AsyncStorage.getItem("theme");
+    themeFromStorage &&
+      this.setState({ theme: themeFromStorage }) &&
+      themeLib.active(themeFromStorage);
+    themeLib.setRoot(this);
   }
 
   handleGetQualifications = async () => {
@@ -62,6 +73,7 @@ export default class App extends Component {
       this.setState({ vacancies });
     } catch (err) {
       console.error(err);
+      await AsyncStorage.getItem("theme");
     }
   };
 
@@ -69,9 +81,15 @@ export default class App extends Component {
     try {
       const { theme } = this.state;
       // @ts-ignore
-      const newTheme = theme === "dark" ? "light" : "dark";
+      if (themeLib.name !== "default") {
+        themeLib.active();
+        AsyncStorage.setItem("theme", "default");
+      } else {
+        themeLib.active("night");
+        AsyncStorage.setItem("theme", "night");
+      }
 
-      this.setState({ theme: newTheme });
+      this.setState({ theme: themeLib.name });
       console.log("handleThemeChange:", this.state.theme);
     } catch (err) {
       console.error(err);
@@ -97,7 +115,7 @@ export default class App extends Component {
       <View
         style={[
           styles.container,
-          { backgroundColor: this.state.theme === "light" ? "white" : "blue" }
+          { backgroundColor: this.state.theme === "default" ? "white" : "blue" }
         ]}
       >
         <Item
@@ -107,14 +125,14 @@ export default class App extends Component {
           <Switch
             style={{ alignSelf: "center" }}
             onValueChange={() => this.handleThemeChange()}
-            value={this.state.theme === "light"}
+            value={this.state.theme === "default"}
           />
         </Item>
         <Tabs style={styles.tabs} renderTabBar={() => <ScrollableTab />}>
           <Tab
             heading={config.tableStatuses.QUALIFICATIONS}
             style={{
-              backgroundColor: this.state.theme === "light" ? "white" : "blue"
+              backgroundColor: this.state.theme === "default" ? "white" : "blue"
             }}
           >
             <TabContainer
@@ -122,14 +140,15 @@ export default class App extends Component {
               data={this.state.qualifications}
               renderRow={this.renderQualifications}
               style={{
-                backgroundColor: this.state.theme === "light" ? "white" : "blue"
+                backgroundColor:
+                  this.state.theme === "default" ? "white" : "blue"
               }}
             />
           </Tab>
           <Tab
             heading={config.tableStatuses.VACANCIES}
             style={{
-              backgroundColor: this.state.theme === "light" ? "white" : "blue"
+              backgroundColor: this.state.theme === "default" ? "white" : "blue"
             }}
           >
             <Item>
@@ -146,7 +165,8 @@ export default class App extends Component {
               data={this.state.vacancies}
               renderRow={this.renderVacancies}
               style={{
-                backgroundColor: this.state.theme === "light" ? "white" : "blue"
+                backgroundColor:
+                  this.state.theme === "default" ? "white" : "blue"
               }}
             />
           </Tab>
