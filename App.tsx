@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Component } from "react";
 import { View, Text, StyleSheet, AsyncStorage, Switch } from "react-native";
-import { Tabs, Tab, ScrollableTab, Button, Item, Input } from "native-base";
+import { Tabs, Tab, ScrollableTab, Button, Item, Input, Spinner } from "native-base";
 import { TabContainer } from "./TabContainer";
 import api from "./api";
 import { config } from "./config";
@@ -69,7 +69,7 @@ export default class App extends Component {
 
   handleGetVacancies = async () => {
     try {
-      console.log('HANDLE GET VACANCIES')
+      console.log("HANDLE GET VACANCIES");
       this.setState({ isVacanciesRefreshing: true });
       const { skill } = this.state;
       // @ts-ignore
@@ -168,8 +168,17 @@ export default class App extends Component {
                 onChangeText={skill => this.setState({ skill })}
               />
             </Item>
-            <Button onPress={this.handleGetVacancies}>
-              <Text>Get Vacancies</Text>
+            <Button
+              block
+              success
+              onPress={this.handleGetVacancies}
+              disabled={this.state.isVacanciesRefreshing}
+            >
+              {this.state.isVacanciesRefreshing ? (
+                <Spinner />
+              ) : (
+                <Text>Get Vacancies</Text>
+              )}
             </Button>
             <TabContainer
               loadData={this.handleGetVacancies}
