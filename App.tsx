@@ -33,7 +33,8 @@ export default class App extends Component {
     vacancies: [],
     qualifications: [],
     skill: "",
-    theme: "default"
+    theme: "default",
+    inputText: ""
   };
 
   async componentDidMount(): void {
@@ -127,6 +128,15 @@ export default class App extends Component {
             onValueChange={() => this.handleThemeChange()}
             value={this.state.theme === "default"}
           />
+        </Item>
+        <Item>
+          <Input
+            value={this.state.inputText}
+            onChangeText={inputText => this.setState({ inputText })}
+            placeHolder="suggestion"
+          >
+            {" "}
+          </Input>
         </Item>
         <Tabs style={styles.tabs} renderTabBar={() => <ScrollableTab />}>
           <Tab
