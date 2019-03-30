@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Component } from "react";
 import { View, Text, StyleSheet, AsyncStorage, Switch } from "react-native";
-import { Tabs, Tab, ScrollableTab, Button, Input, Item } from "native-base";
+import { Tabs, Tab, ScrollableTab, Button, Item, Input } from "native-base";
 import { TabContainer } from "./TabContainer";
 import api from "./api";
 import { config } from "./config";
@@ -34,7 +34,7 @@ export default class App extends Component {
     qualifications: [],
     skill: "",
     theme: "default",
-    inputText: ""
+    skill: ""
   };
 
   async componentDidMount(): void {
@@ -130,14 +130,6 @@ export default class App extends Component {
           />
         </Item>
         <Item>
-          <Input
-            value={this.state.inputText}
-            onChangeText={inputText => this.setState({ inputText })}
-            placeHolder="suggestion"
-          >
-            {" "}
-          </Input>
-        </Item>
         <Tabs style={styles.tabs} renderTabBar={() => <ScrollableTab />}>
           <Tab
             heading={config.tableStatuses.QUALIFICATIONS}
