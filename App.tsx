@@ -34,7 +34,8 @@ export default class App extends Component {
     qualifications: [],
     skill: "",
     theme: "default",
-    skill: ""
+    isVacanciesRefreshing: false,
+    isQualificationsRefreshing: false
   };
 
   async componentDidMount(): void {
@@ -48,6 +49,7 @@ export default class App extends Component {
 
   handleGetQualifications = async () => {
     try {
+      this.setState({ isQualificationsRefreshing: true });
       // @ts-ignore
       const qualifications: Qualification[] = await api.getQualifications();
 
@@ -60,11 +62,15 @@ export default class App extends Component {
       this.setState({ qualifications: qualificationsFiltered });
     } catch (err) {
       console.error(err);
+    } finally {
+      this.setState({ isQualificationsRefreshing: false });
     }
   };
 
   handleGetVacancies = async () => {
     try {
+      console.log('HANDLE GET VACANCIES')
+      this.setState({ isVacanciesRefreshing: true });
       const { skill } = this.state;
       // @ts-ignore
       const vacancies: Vacancy[] = await api.getVacancies({
@@ -75,6 +81,8 @@ export default class App extends Component {
     } catch (err) {
       console.error(err);
       await AsyncStorage.getItem("theme");
+    } finally {
+      this.setState({ isVacanciesRefreshing: false });
     }
   };
 
@@ -129,7 +137,6 @@ export default class App extends Component {
             value={this.state.theme === "default"}
           />
         </Item>
-        <Item>
         <Tabs style={styles.tabs} renderTabBar={() => <ScrollableTab />}>
           <Tab
             heading={config.tableStatuses.QUALIFICATIONS}
@@ -141,6 +148,8 @@ export default class App extends Component {
               loadData={this.handleGetQualifications}
               data={this.state.qualifications}
               renderRow={this.renderQualifications}
+              isRefreshing={this.state.isQualificationsRefreshing}
+              onRefresh={this.handleGetQualifications}
               style={{
                 backgroundColor:
                   this.state.theme === "default" ? "white" : "blue"
@@ -166,6 +175,8 @@ export default class App extends Component {
               loadData={this.handleGetVacancies}
               data={this.state.vacancies}
               renderRow={this.renderVacancies}
+              isRefreshing={this.state.isVacanciesRefreshing}
+              onRefresh={this.handleGetVacancies}
               style={{
                 backgroundColor:
                   this.state.theme === "default" ? "white" : "blue"

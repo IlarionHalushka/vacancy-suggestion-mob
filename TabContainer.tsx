@@ -9,44 +9,25 @@ import {
 } from "react-native";
 
 export class TabContainer extends Component {
-  state = {
-    data: [],
-    isRefreshing: false
-  };
-
-  handleScrollDownToRefresh = async () => {
-    this.setState({ isRefreshing: true });
-    const { loadData } = this.props;
-
-    try {
-      // @ts-ignore
-      const data = await loadData();
-
-      this.setState({ data });
-    } catch (err) {
-      console.error(err);
-    } finally {
-      this.setState({ isRefreshing: false });
-    }
-  };
-
   render() {
+    const { isRefreshing, onRefresh, data, renderRow } = this.props;
+
     return (
       <ScrollView
         refreshControl={
           <RefreshControl
-            refreshing={this.state.isRefreshing}
-            onRefresh={() => this.handleScrollDownToRefresh()}
+            refreshing={isRefreshing}
+            onRefresh={onRefresh}
           />
         }
       >
-        {!this.props.data.length ? (
+        {!data.length ? (
           <Text style={styles.noDataText}>No data. Scroll down to refresh</Text>
         ) : (
           <FlatList
-            data={this.props.data}
+            data={data}
             keyExtractor={item => item.vacancyId}
-            renderItem={({ item }) => this.props.renderRow(item)}
+            renderItem={({ item }) => renderRow(item)}
           />
         )}
       </ScrollView>
