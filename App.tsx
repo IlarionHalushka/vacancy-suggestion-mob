@@ -1,7 +1,15 @@
 import * as React from "react";
 import { Component } from "react";
 import { View, Text, StyleSheet, AsyncStorage, Switch } from "react-native";
-import { Tabs, Tab, ScrollableTab, Button, Item, Input, Spinner } from "native-base";
+import {
+  Tabs,
+  Tab,
+  ScrollableTab,
+  Button,
+  Item,
+  Input,
+  Spinner
+} from "native-base";
 import { TabContainer } from "./TabContainer";
 import api from "./api";
 import { config } from "./config";
@@ -120,17 +128,23 @@ export default class App extends Component {
   );
 
   render() {
+    const theme =
+      this.state.theme === "default"
+        ? {
+            backgroundColor: "blue",
+            color: "white"
+          }
+        : {
+            backgroundColor: "white",
+            color: "black"
+          };
+
     return (
-      <View
-        style={[
-          styles.container,
-          { backgroundColor: this.state.theme === "default" ? "white" : "blue" }
-        ]}
-      >
+      <View style={[styles.container, theme]}>
         <Item
           style={{ display: "flex", justifyContent: "center", marginTop: 70 }}
         >
-          <Text>Night mode:</Text>
+          <Text style={theme} >Night mode:</Text>
           <Switch
             style={{ alignSelf: "center" }}
             onValueChange={() => this.handleThemeChange()}
@@ -138,30 +152,17 @@ export default class App extends Component {
           />
         </Item>
         <Tabs style={styles.tabs} renderTabBar={() => <ScrollableTab />}>
-          <Tab
-            heading={config.tableStatuses.QUALIFICATIONS}
-            style={{
-              backgroundColor: this.state.theme === "default" ? "white" : "blue"
-            }}
-          >
+          <Tab heading={config.tableStatuses.QUALIFICATIONS} style={theme}>
             <TabContainer
               loadData={this.handleGetQualifications}
               data={this.state.qualifications}
               renderRow={this.renderQualifications}
               isRefreshing={this.state.isQualificationsRefreshing}
               onRefresh={this.handleGetQualifications}
-              style={{
-                backgroundColor:
-                  this.state.theme === "default" ? "white" : "blue"
-              }}
+              style={theme}
             />
           </Tab>
-          <Tab
-            heading={config.tableStatuses.VACANCIES}
-            style={{
-              backgroundColor: this.state.theme === "default" ? "white" : "blue"
-            }}
-          >
+          <Tab heading={config.tableStatuses.VACANCIES} style={theme}>
             <Item>
               <Input
                 placeholder="Type skill here"
@@ -186,10 +187,7 @@ export default class App extends Component {
               renderRow={this.renderVacancies}
               isRefreshing={this.state.isVacanciesRefreshing}
               onRefresh={this.handleGetVacancies}
-              style={{
-                backgroundColor:
-                  this.state.theme === "default" ? "white" : "blue"
-              }}
+              style={theme}
             />
           </Tab>
         </Tabs>
