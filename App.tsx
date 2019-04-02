@@ -8,7 +8,7 @@ import {
   Button,
   Item,
   Input,
-  Spinner
+  Spinner,
 } from "native-base";
 import { TabContainer } from "./TabContainer";
 import api from "./api";
@@ -188,6 +188,7 @@ export default class App extends Component {
               isRefreshing={this.state.isVacanciesRefreshing}
               onRefresh={this.handleGetVacancies}
               style={theme}
+              theme={theme}
             />
           </Tab>
         </Tabs>

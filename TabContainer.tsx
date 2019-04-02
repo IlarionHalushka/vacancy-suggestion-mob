@@ -8,27 +8,31 @@ import {
   RefreshControl
 } from "react-native";
 
+import { Card, CardItem } from "native-base";
+
 export class TabContainer extends Component {
   render() {
-    const { isRefreshing, onRefresh, data, renderRow } = this.props;
+    const { isRefreshing, onRefresh, data, renderRow, theme } = this.props;
 
     return (
       <ScrollView
         refreshControl={
-          <RefreshControl
-            refreshing={isRefreshing}
-            onRefresh={onRefresh}
-          />
+          <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
         }
       >
         {!data.length ? (
           <Text style={styles.noDataText}>No data. Scroll down to refresh</Text>
         ) : (
-          <FlatList
-            data={data}
-            keyExtractor={item => item.vacancyId}
-            renderItem={({ item }) => renderRow(item)}
-          />
+          <Card style={theme}>
+            {data.map(item => (
+              <CardItem style={theme}>{renderRow(item)}</CardItem>
+            ))}
+          </Card>
+          // <FlatList
+          //   data={data}
+          //   keyExtractor={item => item.vacancyId}
+          //   renderItem={({ item }) => renderRow(item)}
+          // />
         )}
       </ScrollView>
     );
