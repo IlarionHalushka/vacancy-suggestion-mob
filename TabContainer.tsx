@@ -21,11 +21,13 @@ export class TabContainer extends Component {
         }
       >
         {!data.length ? (
-          <Text style={styles.noDataText}>No data. Scroll down to refresh</Text>
+          <Text style={[styles.noDataText, theme]}>
+            No data. Scroll down to refresh
+          </Text>
         ) : (
           <Card style={theme}>
             {data.map(item => (
-              <CardItem style={theme}>{renderRow(item)}</CardItem>
+              <CardItem style={theme}>{renderRow(item, theme)}</CardItem>
             ))}
           </Card>
           // <FlatList

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8732ced8-7260-4518-b89a-5c5bf7abcf3d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/packager-info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TabContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/TabContainer.tsx" afterDir="false" />
@@ -18,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="130" column="15" selection-start-line="130" selection-start-column="10" selection-end-line="130" selection-end-column="15" />
+            <state relative-caret-position="132">
+              <caret line="176" column="57" selection-start-line="176" selection-start-column="57" selection-end-line="176" selection-end-column="57" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -39,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TabContainer.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="34" column="15" lean-forward="true" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
+            <state relative-caret-position="354">
+              <caret line="33" column="26" lean-forward="true" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -87,6 +86,7 @@
       <find>styles</find>
       <find>night</find>
       <find>no</find>
+      <find>no da</find>
     </findStrings>
     <replaceStrings>
       <replace>config.tableStatuses</replace>
@@ -109,8 +109,8 @@
         <option value="$PROJECT_DIR$/Tab.tsx" />
         <option value="$PROJECT_DIR$/theme/default.js" />
         <option value="$PROJECT_DIR$/theme/night.js" />
-        <option value="$PROJECT_DIR$/App.tsx" />
         <option value="$PROJECT_DIR$/TabContainer.tsx" />
+        <option value="$PROJECT_DIR$/App.tsx" />
       </list>
     </option>
   </component>
@@ -214,7 +214,7 @@
       <workItem from="1553983552091" duration="116000" />
       <workItem from="1554109472054" duration="15000" />
       <workItem from="1554148848513" duration="520000" />
-      <workItem from="1554236706647" duration="675000" />
+      <workItem from="1554236706647" duration="975000" />
     </task>
     <task id="LOCAL-00001" summary="add sample Hello world component">
       <created>1550353334683</created>
@@ -545,11 +545,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554149336227</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="render rows using Card and CardItems">
+      <created>1554237453121</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1554237453121</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43068000" />
+    <option name="totallyTimeSpent" value="43368000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -570,7 +577,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" weight="0.32876712" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2369863" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.24657534" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -585,7 +592,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove deprecated state 'mode'" />
     <MESSAGE value="remove deprecated state 'loading' and loading modal with spinner" />
     <MESSAGE value="add image classification" />
     <MESSAGE value="remove image classification because expo doesn't support native modules" />
@@ -610,7 +616,8 @@
     <MESSAGE value="implement scroll to refresh on both tabs" />
     <MESSAGE value="style get vacancies button and add spinner on data loading" />
     <MESSAGE value="detect theme in one variable" />
-    <option name="LAST_COMMIT_MESSAGE" value="detect theme in one variable" />
+    <MESSAGE value="render rows using Card and CardItems" />
+    <option name="LAST_COMMIT_MESSAGE" value="render rows using Card and CardItems" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -722,20 +729,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App.tsx">
+    <entry file="file://$PROJECT_DIR$/TabContainer.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="130" column="15" selection-start-line="130" selection-start-column="10" selection-end-line="130" selection-end-column="15" />
+        <state relative-caret-position="354">
+          <caret line="33" column="26" lean-forward="true" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TabContainer.tsx">
+    <entry file="file://$PROJECT_DIR$/App.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="34" column="15" lean-forward="true" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
+        <state relative-caret-position="132">
+          <caret line="176" column="57" selection-start-line="176" selection-start-column="57" selection-end-line="176" selection-end-column="57" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

@@ -113,15 +113,15 @@ export default class App extends Component {
     }
   };
 
-  renderQualifications = item => (
-    <View style={styles.listItem}>
+  renderQualifications = (item, theme) => (
+    <View style={[styles.listItem, theme]}>
       <Text style={styles.tableText}>{item.value}</Text>
       <Text style={styles.tableText}>{item.counter}</Text>
     </View>
   );
 
-  renderVacancies = item => (
-    <View style={styles.listItem}>
+  renderVacancies = (item, theme) => (
+    <View style={[styles.listItem, theme]}>
       <Text style={styles.tableText}>{item.cityName}</Text>
       <Text style={styles.tableText}>{item.vacancyName}</Text>
     </View>
@@ -131,7 +131,7 @@ export default class App extends Component {
     const theme =
       this.state.theme === "default"
         ? {
-            backgroundColor: "blue",
+            backgroundColor: "#44afff",
             color: "white"
           }
         : {
@@ -160,6 +160,7 @@ export default class App extends Component {
               isRefreshing={this.state.isQualificationsRefreshing}
               onRefresh={this.handleGetQualifications}
               style={theme}
+              theme={theme}
             />
           </Tab>
           <Tab heading={config.tableStatuses.VACANCIES} style={theme}>
