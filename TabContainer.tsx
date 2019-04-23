@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Component } from "react";
 import {
   Text,
   StyleSheet,
@@ -7,44 +6,39 @@ import {
   ScrollView,
   RefreshControl
 } from "react-native";
-
 import { Card, CardItem } from "native-base";
 
-export class TabContainer extends Component {
-  render() {
-    const { isRefreshing, onRefresh, data, renderRow, theme } = this.props;
-
-    return (
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
-        }
-      >
-        {!data.length ? (
-          <Text style={[styles.noDataText, theme]}>
-            No data. Scroll down to refresh
-          </Text>
-        ) : (
-          <Card style={theme}>
-            {data.map(item => (
-              <CardItem
-                style={theme}
-                key={`${item.vacancyId}${item.companyExternalId}`}
-              >
-                {renderRow(item, theme)}
-              </CardItem>
-            ))}
-          </Card>
-          // <FlatList
-          //   data={data}
-          //   keyExtractor={item => item.vacancyId}
-          //   renderItem={({ item }) => renderRow(item)}
-          // />
-        )}
-      </ScrollView>
-    );
-  }
-}
+const TabContainer = ({ isRefreshing, onRefresh, data, renderRow, theme }) => {
+  return (
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
+      }
+    >
+      {!data.length ? (
+        <Text style={[styles.noDataText, theme]}>
+          No data. Scroll down to refresh
+        </Text>
+      ) : (
+        <Card style={theme}>
+          {data.map(item => (
+            <CardItem
+              style={theme}
+              key={`${item.vacancyId}${item.companyExternalId}`}
+            >
+              {renderRow(item, theme)}
+            </CardItem>
+          ))}
+        </Card>
+        // <FlatList
+        //   data={data}
+        //   keyExtractor={item => item.vacancyId}
+        //   renderItem={({ item }) => renderRow(item)}
+        // />
+      )}
+    </ScrollView>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -71,3 +65,5 @@ const styles = StyleSheet.create({
   tableText: { alignSelf: "center" },
   tabs: { marginTop: 50 }
 });
+
+export default TabContainer;

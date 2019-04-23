@@ -10,7 +10,7 @@ import {
   Input,
   Spinner,
 } from "native-base";
-import { TabContainer } from "./TabContainer";
+import TabContainer from "./TabContainer";
 import api from "./api";
 import { config } from "./config";
 
