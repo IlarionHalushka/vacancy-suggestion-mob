@@ -114,17 +114,17 @@ export default class App extends Component {
   };
 
   renderQualifications = (item, theme) => (
-    <View style={[styles.listItem, theme]}>
+    <Item style={[styles.listItem, theme]}>
       <Text style={styles.tableText}>{item.value}</Text>
       <Text style={styles.tableText}>{item.counter}</Text>
-    </View>
+    </Item>
   );
 
   renderVacancies = (item, theme) => (
-    <View style={[styles.listItem, theme]}>
+    <Item style={[styles.listItem, theme]}>
       <Text style={styles.tableText}>{item.cityName}</Text>
       <Text style={styles.tableText}>{item.vacancyName}</Text>
-    </View>
+    </Item>
   );
 
   render() {

@@ -27,7 +27,12 @@ export class TabContainer extends Component {
         ) : (
           <Card style={theme}>
             {data.map(item => (
-              <CardItem style={theme}>{renderRow(item, theme)}</CardItem>
+              <CardItem
+                style={theme}
+                key={`${item.vacancyId}${item.companyExternalId}`}
+              >
+                {renderRow(item, theme)}
+              </CardItem>
             ))}
           </Card>
           // <FlatList
