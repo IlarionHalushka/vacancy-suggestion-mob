@@ -21,20 +21,12 @@ const TabContainer = ({ isRefreshing, onRefresh, data, renderRow, theme }) => {
         </Text>
       ) : (
         <Card style={theme}>
-          {data.map(item => (
-            <CardItem
-              style={theme}
-              key={`${item.vacancyId}${item.companyExternalId}`}
-            >
-              {renderRow(item, theme)}
-            </CardItem>
-          ))}
+            <FlatList
+              data={data}
+              keyExtractor={item => item.vacancyId}
+              renderItem={({ item }) => renderRow(item)}
+            />
         </Card>
-        // <FlatList
-        //   data={data}
-        //   keyExtractor={item => item.vacancyId}
-        //   renderItem={({ item }) => renderRow(item)}
-        // />
       )}
     </ScrollView>
   );
