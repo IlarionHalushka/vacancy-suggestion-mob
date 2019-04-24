@@ -8,7 +8,7 @@ import {
   Button,
   Item,
   Input,
-  Spinner,
+  Spinner
 } from "native-base";
 import TabContainer from "./TabContainer";
 import api from "./api";
@@ -144,7 +144,7 @@ export default class App extends Component {
         <Item
           style={{ display: "flex", justifyContent: "center", marginTop: 70 }}
         >
-          <Text style={theme} >Night mode:</Text>
+          <Text style={theme}>Night mode:</Text>
           <Switch
             style={{ alignSelf: "center" }}
             onValueChange={() => this.handleThemeChange()}
@@ -203,12 +203,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
   listItem: {
-    margin: 2,
-    marginHorizontal: "5%",
-    borderTopWidth: 1,
-    borderTopEndRadius: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     flex: 1,
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-between"
   },
   loaderText: {
