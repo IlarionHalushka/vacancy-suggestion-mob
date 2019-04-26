@@ -144,8 +144,11 @@ export default class AppContent extends Component {
     return (
       <View style={[styles.container, theme]}>
         <Item
-          style={{ display: "flex", justifyContent: "center", marginTop: 70 }}
+          style={{ display: "flex", justifyContent: "space-between", marginTop: 70 }}
         >
+          <Button onPress={this.props.navigation.openDrawer}>
+            <Text>Open Drawer</Text>
+          </Button>
           <Text style={theme}>Night mode:</Text>
           <Switch
             style={{ alignSelf: "center" }}

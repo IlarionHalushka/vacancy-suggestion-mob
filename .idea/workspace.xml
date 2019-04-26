@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8732ced8-7260-4518-b89a-5c5bf7abcf3d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AppContent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/packager-info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/AppContent.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
@@ -32,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AppContent.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="126">
+              <caret line="146" column="66" selection-start-line="146" selection-start-column="66" selection-end-line="146" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -124,8 +120,8 @@
         <option value="$PROJECT_DIR$/theme/default.js" />
         <option value="$PROJECT_DIR$/theme/night.js" />
         <option value="$PROJECT_DIR$/TabContainer.tsx" />
-        <option value="$PROJECT_DIR$/AppContent.tsx" />
         <option value="$PROJECT_DIR$/App.tsx" />
+        <option value="$PROJECT_DIR$/AppContent.tsx" />
       </list>
     </option>
   </component>
@@ -227,14 +223,7 @@
       <workItem from="1554236706647" duration="1617000" />
       <workItem from="1556041561608" duration="969000" />
       <workItem from="1556133149075" duration="1065000" />
-      <workItem from="1556302020692" duration="410000" />
-    </task>
-    <task id="LOCAL-00005" summary="add interfaces for qualifications, item">
-      <created>1551130150254</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1551130150255</updated>
+      <workItem from="1556302020692" duration="1336000" />
     </task>
     <task id="LOCAL-00006" summary="style qualifications button">
       <created>1551131554650</created>
@@ -572,11 +561,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556134365861</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="add drawer navigation">
+      <created>1556302853219</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1556302853220</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46454000" />
+    <option name="totallyTimeSpent" value="47380000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -612,7 +608,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove page change on action button click" />
     <MESSAGE value="remove page(tab) change on action button click" />
     <MESSAGE value="add TabContainer component" />
     <MESSAGE value="use customizable TabContainer in App.js" />
@@ -637,7 +632,8 @@
     <MESSAGE value="make TabContainer functional stateless component" />
     <MESSAGE value="use flatlist in tab container" />
     <MESSAGE value="make items of list prettier" />
-    <option name="LAST_COMMIT_MESSAGE" value="make items of list prettier" />
+    <MESSAGE value="add drawer navigation" />
+    <option name="LAST_COMMIT_MESSAGE" value="add drawer navigation" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -762,13 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AppContent.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -776,6 +765,13 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AppContent.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="146" column="66" selection-start-line="146" selection-start-column="66" selection-end-line="146" selection-end-column="66" />
         </state>
       </provider>
     </entry>
