@@ -57,7 +57,7 @@ export default class AppContent extends Component {
     themeLib.setRoot(this);
   }
 
-  handleGetQualifications = async () => {
+  handleGetQualifications = async () : Promise<any> => {
     try {
       this.setState({ isQualificationsRefreshing: true });
       // @ts-ignore
@@ -77,7 +77,7 @@ export default class AppContent extends Component {
     }
   };
 
-  handleGetVacancies = async () => {
+  handleGetVacancies = async () : Promise<any> => {
     try {
       console.log("HANDLE GET VACANCIES");
       this.setState({ isVacanciesRefreshing: true });

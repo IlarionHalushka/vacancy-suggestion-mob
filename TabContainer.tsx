@@ -6,9 +6,26 @@ import {
   ScrollView,
   RefreshControl
 } from "react-native";
-import { Card, CardItem } from "native-base";
+import { Card } from "native-base";
 
-const TabContainer = ({ isRefreshing, onRefresh, data, renderRow, theme }) => {
+interface IItem {
+  vacancyId: string;
+}
+
+interface ITheme {
+  backgroundColor: string;
+  color: string;
+}
+
+interface IProps {
+  isRefreshing: boolean;
+  onRefresh: Function;
+  data: Array<Object>;
+  renderRow: Function;
+  theme: ITheme;
+}
+
+const TabContainer = ({ isRefreshing, onRefresh, data, renderRow, theme } : IProps) => {
   return (
     <ScrollView
       refreshControl={
@@ -23,7 +40,7 @@ const TabContainer = ({ isRefreshing, onRefresh, data, renderRow, theme }) => {
         <Card style={theme}>
             <FlatList
               data={data}
-              keyExtractor={item => item.vacancyId}
+              keyExtractor={(item: IItem) => item.vacancyId}
               renderItem={({ item }) => renderRow(item)}
             />
         </Card>
