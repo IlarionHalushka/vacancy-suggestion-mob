@@ -51,6 +51,7 @@ export default class AppContent extends Component {
   async componentDidMount(): void {
     // @ts-ignore
     const themeFromStorage = await AsyncStorage.getItem("theme");
+    console.log('themeFromStorage', themeFromStorage);
     themeFromStorage &&
       this.setState({ theme: themeFromStorage }) &&
       themeLib.active(themeFromStorage);
