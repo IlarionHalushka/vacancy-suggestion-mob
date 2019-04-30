@@ -16,6 +16,7 @@ import api from "./api";
 import { config } from "./config";
 
 import themeLib from "react-native-theme";
+import Container from "./Container";
 
 // Setup Themes
 themeLib.add(require("./theme/default"));
@@ -141,15 +142,9 @@ export default class AppContent extends Component {
             color: "black"
           };
 
+    // @ts-ignore
     return (
-      <View style={[styles.container, theme]}>
-        <Item
-          style={{ display: "flex", justifyContent: "space-between", marginTop: 70 }}
-        >
-          <Button onPress={this.props.navigation.openDrawer}>
-            <Text>Open Drawer</Text>
-          </Button>
-        </Item>
+      <Container navigation={this.props.navigation} style={theme}>
         <Tabs style={styles.tabs} renderTabBar={() => <ScrollableTab />}>
           <Tab heading={config.tableStatuses.QUALIFICATIONS} style={theme}>
             <TabContainer
@@ -192,15 +187,12 @@ export default class AppContent extends Component {
             />
           </Tab>
         </Tabs>
-      </View>
+      </Container>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
   listItem: {
     paddingHorizontal: 20,
     paddingVertical: 10,
