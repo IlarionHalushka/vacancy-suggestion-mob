@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Component } from "react";
-import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import { View, Text, StyleSheet, AsyncStorage, Switch } from "react-native";
 import {
@@ -150,12 +149,6 @@ export default class AppContent extends Component {
           <Button onPress={this.props.navigation.openDrawer}>
             <Text>Open Drawer</Text>
           </Button>
-          <Text style={theme}>Night mode:</Text>
-          <Switch
-            style={{ alignSelf: "center" }}
-            onValueChange={() => this.handleThemeChange()}
-            value={this.state.theme === "default"}
-          />
         </Item>
         <Tabs style={styles.tabs} renderTabBar={() => <ScrollableTab />}>
           <Tab heading={config.tableStatuses.QUALIFICATIONS} style={theme}>
