@@ -1,11 +1,15 @@
 import React from "react";
 import { createDrawerNavigator, createAppContainer } from "react-navigation";
-import AppContent from "./AppContent";
+import Qualifications from "./Qualifications";
+import Vacancies from "./Vacancies";
 import Settings from "./Settings";
 
 const MyDrawerNavigator = createDrawerNavigator({
-  Home: {
-    screen: AppContent,
+  Qualifications: {
+    screen: Qualifications,
+  },
+  Vacancies: {
+    screen: Vacancies,
   },
   Settings: {
     screen: Settings,
