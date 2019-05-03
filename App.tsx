@@ -1,5 +1,4 @@
 import React from "react";
-import { Text } from 'react-native';
 import {
   createDrawerNavigator,
   createAppContainer,
@@ -12,8 +11,8 @@ import Settings from "./Settings";
 const VacanciesStack = createStackNavigator(
   {
     Vacancies: {
-      screen: Vacancies,
-    },
+      screen: Vacancies
+    }
   },
   {
     initialRouteName: "Vacancies"
@@ -23,8 +22,8 @@ const VacanciesStack = createStackNavigator(
 const QualificationsStack = createStackNavigator(
   {
     Qualifications: {
-      screen: Qualifications,
-    },
+      screen: Qualifications
+    }
   },
   {
     initialRouteName: "Qualifications"
@@ -34,8 +33,8 @@ const QualificationsStack = createStackNavigator(
 const SettingsStack = createStackNavigator(
   {
     Settings: {
-      screen: Settings,
-    },
+      screen: Settings
+    }
   },
   {
     initialRouteName: "Settings"

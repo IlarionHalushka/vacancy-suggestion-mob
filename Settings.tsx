@@ -1,11 +1,8 @@
 import * as React from "react";
 import { Component } from "react";
 
-import { View, Text, StyleSheet, AsyncStorage, Switch } from "react-native";
-import {
-  Button,
-  Item,
-} from "native-base";
+import { Text, StyleSheet, AsyncStorage, Switch } from "react-native";
+import { Item } from "native-base";
 
 import themeLib from "react-native-theme";
 import Container from "./Container";
@@ -17,14 +14,13 @@ themeLib.add(require("./theme/default"));
 themeLib.add(require("./theme/night"), "night");
 // themeLib.addComponents({ Example: require("./RedExample") }, "night");
 
-
 export default class Settings extends Component {
   static navigationOptions = {
-    headerTitle: <Text>Settings</Text>,
+    headerTitle: <Text>Settings</Text>
   };
 
   state = {
-    theme: "default",
+    theme: "default"
   };
 
   async componentDidMount(): void {
@@ -66,17 +62,15 @@ export default class Settings extends Component {
           };
 
     return (
-      <Container navigation={this.props.navigation} style={theme}>
-          <Item
-            style={{ display: "flex", justifyContent: "space-between" }}
-          >
-            <Text style={theme}>Night mode:</Text>
-            <Switch
-              style={{ alignSelf: "center" }}
-              onValueChange={() => this.handleThemeChange()}
-              value={this.state.theme === "default"}
-            />
-          </Item>
+      <Container style={theme}>
+        <Item style={{ display: "flex", justifyContent: "space-between" }}>
+          <Text style={theme}>Night mode:</Text>
+          <Switch
+            style={{ alignSelf: "center" }}
+            onValueChange={() => this.handleThemeChange()}
+            value={this.state.theme === "default"}
+          />
+        </Item>
       </Container>
     );
   }

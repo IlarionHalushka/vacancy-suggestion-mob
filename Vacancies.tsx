@@ -1,21 +1,10 @@
 import * as React from "react";
 import { Component } from "react";
 
-import { View, Text, StyleSheet, AsyncStorage, Switch } from "react-native";
-import {
-  Tabs,
-  Tab,
-  ScrollableTab,
-  Button,
-  Item,
-  Input,
-  Spinner,
-  FooterTab,
-  Footer
-} from "native-base";
+import { Text, StyleSheet, AsyncStorage } from "react-native";
+import { Button, Item, Input, Spinner } from "native-base";
 import TabContainer from "./TabContainer";
 import api from "./api";
-import { config } from "./config";
 
 import themeLib from "react-native-theme";
 import Container from "./Container";
@@ -36,7 +25,7 @@ interface Vacancy extends Array<Vacancy> {
 
 export default class Vacancies extends Component {
   static navigationOptions = {
-    headerTitle: <Text>Vacancies</Text>,
+    headerTitle: <Text>Vacancies</Text>
   };
 
   state = {
@@ -96,7 +85,7 @@ export default class Vacancies extends Component {
 
     // @ts-ignore
     return (
-      <Container navigation={this.props.navigation} style={theme}>
+      <Container style={theme}>
         <Item>
           <Input
             placeholder="Type skill here"

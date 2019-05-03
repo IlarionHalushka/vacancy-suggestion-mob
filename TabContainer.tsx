@@ -25,7 +25,13 @@ interface IProps {
   theme: ITheme;
 }
 
-const TabContainer = ({ isRefreshing, onRefresh, data, renderRow, theme } : IProps) => {
+const TabContainer = ({
+  isRefreshing,
+  onRefresh,
+  data,
+  renderRow,
+  theme
+}: IProps) => {
   return (
     <ScrollView
       refreshControl={
@@ -38,11 +44,11 @@ const TabContainer = ({ isRefreshing, onRefresh, data, renderRow, theme } : IPro
         </Text>
       ) : (
         <Card style={theme}>
-            <FlatList
-              data={data}
-              keyExtractor={(item: IItem) => item.vacancyId}
-              renderItem={({ item }) => renderRow(item)}
-            />
+          <FlatList
+            data={data}
+            keyExtractor={(item: IItem) => item.vacancyId}
+            renderItem={({ item }) => renderRow(item)}
+          />
         </Card>
       )}
     </ScrollView>

@@ -1,23 +1,12 @@
 import * as React from "react";
 import { Component } from "react";
 
-import { View, Text, StyleSheet, AsyncStorage, Switch } from "react-native";
-import {
-  Tabs,
-  Tab,
-  ScrollableTab,
-  Button,
-  Item,
-  Input,
-  Spinner,
-  FooterTab,
-  Footer
-} from "native-base";
+import { Text, StyleSheet, AsyncStorage } from "react-native";
+import { Item } from "native-base";
+import themeLib from "react-native-theme";
+
 import TabContainer from "./TabContainer";
 import api from "./api";
-import { config } from "./config";
-
-import themeLib from "react-native-theme";
 import Container from "./Container";
 
 // Setup Themes
@@ -35,7 +24,7 @@ interface Qualification extends Array<Qualification> {
 
 export default class Qualifications extends Component {
   static navigationOptions = {
-    headerTitle: <Text>Qualifications</Text>,
+    headerTitle: <Text>Qualifications</Text>
   };
 
   state = {
@@ -96,7 +85,7 @@ export default class Qualifications extends Component {
 
     // @ts-ignore
     return (
-      <Container navigation={this.props.navigation} style={theme}>
+      <Container style={theme}>
         <TabContainer
           loadData={this.handleGetQualifications}
           data={this.state.qualifications}
