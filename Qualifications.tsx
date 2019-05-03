@@ -34,6 +34,10 @@ interface Qualification extends Array<Qualification> {
 }
 
 export default class Qualifications extends Component {
+  static navigationOptions = {
+    headerTitle: <Text>Qualifications</Text>,
+  };
+
   state = {
     qualifications: [],
     skill: "",

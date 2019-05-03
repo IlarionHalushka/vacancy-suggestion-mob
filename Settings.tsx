@@ -19,6 +19,10 @@ themeLib.add(require("./theme/night"), "night");
 
 
 export default class Settings extends Component {
+  static navigationOptions = {
+    headerTitle: <Text>Settings</Text>,
+  };
+
   state = {
     theme: "default",
   };

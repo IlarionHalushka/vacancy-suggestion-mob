@@ -34,7 +34,11 @@ interface Vacancy extends Array<Vacancy> {
   cityName: string;
 }
 
-export default class AppContent extends Component {
+export default class Vacancies extends Component {
+  static navigationOptions = {
+    headerTitle: <Text>Vacancies</Text>,
+  };
+
   state = {
     vacancies: [],
     skill: "",
