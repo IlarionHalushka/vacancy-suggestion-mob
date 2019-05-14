@@ -1,7 +1,9 @@
 {
   "extends": [
     "tslint:recommended",
-    "tslint-react"
+    "tslint-react",
+    "tslint-eslint-rules",
+    "tslint-config-prettier"
   ],
   "rules": {
     "jsx-no-multiline-js": false,
