@@ -28,6 +28,11 @@ interface IVacancy extends Array<IVacancy> {
   cityName: string;
 }
 
+interface ITheme {
+  backgroundColor: string;
+  color: string;
+}
+
 export default class Vacancies extends Component {
   public static navigationOptions = {
     headerTitle: <Text>Vacancies</Text>,
@@ -71,7 +76,7 @@ export default class Vacancies extends Component {
     }
   };
 
-  public renderVacancies = (item: IVacancy, theme: any) => (
+  public renderVacancies = (item: IVacancy, theme: ITheme) => (
     <Item style={[styles.listItem, theme]}>
       <Text style={styles.tableText}>{item.cityName}</Text>
       <Text style={styles.tableText}>{item.vacancyName}</Text>
