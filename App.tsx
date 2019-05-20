@@ -8,12 +8,16 @@ import {
 
 import Qualifications from './Qualifications';
 import Settings from './Settings';
+import SingleVacancy from './SingleVacancy';
 import Vacancies from './Vacancies';
 
 const VacanciesStack = createStackNavigator(
   {
     Vacancies: {
       screen: Vacancies,
+    },
+    SingleVacancy: {
+      screen: SingleVacancy,
     },
   },
   {

@@ -1,7 +1,7 @@
 import { Button, Input, Item, Spinner } from 'native-base';
 import * as React from 'react';
 import { Component } from 'react';
-import { AsyncStorage, StyleSheet, Text } from 'react-native';
+import { AsyncStorage, StyleSheet, Text, TouchableOpacity } from 'react-native';
 // @ts-ignore
 import themeLib from 'react-native-theme';
 
@@ -68,6 +68,7 @@ export default class Vacancies extends Component {
       });
 
       this.setState({ vacancies });
+      console.log(vacancies[0])
     } catch (err) {
       console.error(err);
       await AsyncStorage.getItem('theme');
@@ -76,10 +77,14 @@ export default class Vacancies extends Component {
     }
   };
 
-  public renderVacancies = (item: IVacancy, theme: ITheme) => (
-    <Item style={[styles.listItem, theme]}>
-      <Text style={styles.tableText}>{item.cityName}</Text>
-      <Text style={styles.tableText}>{item.vacancyName}</Text>
+  public renderVacancies = (vacancy: IVacancy, theme: ITheme) => (
+    <Item style={[styles.listItem, theme]} key={vacancy.externalId}>
+      <TouchableOpacity
+        onPress={() => this.props.navigation.navigate('SingleVacancy', { vacancy })}
+      >
+        <Text style={styles.tableText}>{vacancy.name}</Text>
+        <Text style={styles.tableText}>{vacancy.externalId}</Text>
+      </TouchableOpacity>
     </Item>
   );
 
