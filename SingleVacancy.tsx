@@ -1,7 +1,7 @@
-import { Button, Input, Item, Spinner } from 'native-base';
+import { Button, Input, Item, Spinner, Card, Body, Header, CardItem } from 'native-base';
 import * as React from 'react';
 import { Component } from 'react';
-import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
+import { AsyncStorage, ScrollView, StyleSheet, Text, View } from 'react-native';
 // @ts-ignore
 import themeLib from 'react-native-theme';
 import { NavigationNavigatorProps } from 'react-navigation';
@@ -28,6 +28,8 @@ interface IVacancy extends Array<IVacancy> {
   vacancyId: number;
   vacancyName: string;
   cityName: string;
+  externalId: string;
+  requirements: [];
 }
 
 interface IProps {
@@ -44,11 +46,22 @@ export default class SingleVacancy extends Component<IProps, any> {
     const vacancy: IVacancy = navigation.getParam('vacancy');
 
     return (
-      <View>
-        <Text>{vacancy.name}</Text>
-        <Text>{vacancy.externalId}</Text>
-        <Text>{vacancy.requirements}</Text>
-      </View>
+      <ScrollView>
+        <Card>
+          <Header>
+            <Text>{vacancy.name}</Text>
+          </Header>
+          <CardItem>
+            <Text>External ID:{vacancy.externalId}</Text>
+          </CardItem>
+          <Text>Requirements:</Text>
+          {vacancy.requirements.map((requirement, i) => (
+            <CardItem key={`requirement-${i}`}>
+              <Text>* {requirement}</Text>
+            </CardItem>
+          ))}
+        </Card>
+      </ScrollView>
     );
   }
 }
