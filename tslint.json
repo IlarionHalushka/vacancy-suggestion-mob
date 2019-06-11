@@ -37,6 +37,7 @@
       "single",
       "jsx-double",
       "avoid-escape"
-    ]
+    ],
+    "jsx-no-lambda": false
   }
 }

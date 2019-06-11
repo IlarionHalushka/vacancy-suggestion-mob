@@ -20,6 +20,7 @@ const VacanciesStack = createStackNavigator(
       screen: SingleVacancy,
     },
   },
+  // TODO style headers
   {
     initialRouteName: 'Vacancies',
   }

@@ -31,7 +31,7 @@ const TabContainer = ({ isRefreshing, onRefresh, data, renderRow, theme }: IProp
           <FlatList
             data={data}
             keyExtractor={(item: IItem) => item.vacancyId}
-            renderItem={({ item }) => renderRow(item)}
+            renderItem={({ item }) => renderRow(item, theme)}
           />
         </Card>
       )}

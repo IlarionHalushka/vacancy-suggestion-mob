@@ -4,7 +4,7 @@ import { Component } from 'react';
 import { AsyncStorage, ScrollView, StyleSheet, Text, View } from 'react-native';
 // @ts-ignore
 import themeLib from 'react-native-theme';
-import { NavigationNavigatorProps } from 'react-navigation';
+import { NavigationNavigatorProps, NavigationScreenProp } from 'react-navigation';
 
 import api from './api';
 import Container from './Container';
@@ -33,7 +33,7 @@ interface IVacancy extends Array<IVacancy> {
 }
 
 interface IProps {
-  navigation: any;
+  navigation: NavigationScreenProp<any, any>;
 }
 
 export default class SingleVacancy extends Component<IProps, any> {
